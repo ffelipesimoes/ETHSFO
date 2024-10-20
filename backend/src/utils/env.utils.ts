@@ -4,8 +4,8 @@ import { config } from "dotenv";
 
 // Carregar as variáveis de ambiente no início do arquivo
 const NODE_ENV = process.env.NODE_ENV || "development";
-config({ path: `.env.${NODE_ENV}` });
 config(); // Adicione esta linha para carregar o arquivo .env padrão
+config({ path: `.env.${NODE_ENV}`, override: true });
 
 process.env.TZ = MOMENT_TZ_UTC;
 
@@ -21,15 +21,6 @@ const {
   UNLIMIT_SIGNATURE,
   UNLIMIT_PARTNER_ACCOUNT_ID,
 } = process.env;
-
-console.log(`NODE_ENV: ${NODE_ENV}`);
-console.log("Variáveis de ambiente carregadas:", {
-  REQUEST_TIMEOUT,
-  UNLIMIT_BASE_URL,
-  UNLIMIT_API_KEY,
-  UNLIMIT_SIGNATURE,
-  UNLIMIT_PARTNER_ACCOUNT_ID,
-});
 
 export default class EnvUtils {
   static get requestTimeout(): number {

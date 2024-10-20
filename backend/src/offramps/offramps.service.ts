@@ -13,16 +13,18 @@ export class OfframpsService {
     quoteOfframpDto: QuoteOfframpRequest
   ): Promise<QuoteOfframpResponse> {
     const response = await this.unlimitClient.quote({
-      crypto: quoteOfframpDto.crypto,
-      cryptoAmount: quoteOfframpDto.cryptoAmount,
-      calcByFiat: quoteOfframpDto.calcByFiat === "true",
-      fiat: quoteOfframpDto.fiat,
-      fiatAmount: quoteOfframpDto.fiatAmount,
-      payment: quoteOfframpDto.payment,
-      region: quoteOfframpDto.region,
+      crypto: quoteOfframpDto.sourceCurrencyISO3,
+      cryptoAmount: quoteOfframpDto.targetAmount
+        ? undefined
+        : quoteOfframpDto.sourceAmount,
+      calcByFiat: !!quoteOfframpDto.targetAmount,
+      fiat: quoteOfframpDto.targetCurrencyISO3,
+      fiatAmount: quoteOfframpDto.targetAmount,
+      payment: quoteOfframpDto.targetMethod,
+      region: quoteOfframpDto.targetRegionISO2,
     });
     return {
-      processingFee: ParseUtils.toNumber(response.processingFee) || 0,
+      processingFee: ParseUtils.toNumber(response.processingFee),
       amountOut: ParseUtils.toNumber(response.amountOut),
       amountIn: ParseUtils.toNumber(response.amountIn),
       exchangeRate: ParseUtils.toNumber(response.exchangeRate),
