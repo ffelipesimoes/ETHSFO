@@ -23,6 +23,8 @@ const {
   UNLIMIT_PARTNER_ACCOUNT_ID,
 } = process.env;
 
+console.log(`NODE_ENV: ${process.env}`);
+
 export default class EnvUtils {
   static get requestTimeout(): number {
     return parseInt(REQUEST_TIMEOUT);
