@@ -1,11 +1,10 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
-import { OfframpsModule } from './offramps/offramps.module';
+import { Module } from "@nestjs/common";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { OfframpsModule } from "./offramps/offramps.module";
 
 @Module({
-  imports: [UsersModule, OfframpsModule],
+  imports: [OfframpsModule],
   controllers: [AppController],
   providers: [AppService],
 })
