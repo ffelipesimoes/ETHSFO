@@ -31,10 +31,9 @@ export class UnlimitClient {
           },
         }
       );
-      console.log(`Quote response ${JSON.stringify(response.data)}`);
       return response.data;
     } catch (error) {
-      console.error("Quote error: ", error);
+      console.error("Quote error: ", error.response.data);
     }
   }
 }

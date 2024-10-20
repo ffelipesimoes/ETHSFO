@@ -1,10 +1,8 @@
 export class QuoteOfframpRequest {
-  partnerAccountId: string;
-  fiatAmount: number;
-  payment: string;
-  fiat: string;
-  crypto: string;
-  region: string;
-  calcByFiat: string;
-  cryptoAmount: number;
+  targetMethod: string;
+  targetCurrencyISO3: string;
+  targetRegionISO2: string;
+  targetAmount?: number;
+  sourceCurrencyISO3: string;
+  sourceAmount?: number;
 }

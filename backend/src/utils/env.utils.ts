@@ -22,15 +22,6 @@ const {
   UNLIMIT_PARTNER_ACCOUNT_ID,
 } = process.env;
 
-console.log(`NODE_ENV: ${NODE_ENV}`);
-console.log("Variáveis de ambiente carregadas:", {
-  REQUEST_TIMEOUT,
-  UNLIMIT_BASE_URL,
-  UNLIMIT_API_KEY,
-  UNLIMIT_SIGNATURE,
-  UNLIMIT_PARTNER_ACCOUNT_ID,
-});
-
 export default class EnvUtils {
   static get requestTimeout(): number {
     return parseInt(REQUEST_TIMEOUT);
